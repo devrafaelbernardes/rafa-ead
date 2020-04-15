@@ -35,7 +35,7 @@ export const HeaderAvatarContainer = styled.div`
 
 export const HeaderTitle = styled.div`
     display: flex;
-    font-size: ${({ theme }) => theme.sizes.fonts.large};
+    font-size: ${({ theme }) => theme.sizes.fonts.xlarge};
 
     @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
         width: 100%;

@@ -32,3 +32,10 @@ export const ItemContainer = styled(Link)`
 
     background: ${({ theme, active }) => active ? theme.colors.backgrounds.primary_dark : 'transparent'};
 `;
+
+export const PlaylistTitle = styled(Row)`
+    padding: 15px 15px 5px;
+    font-size: ${({ theme }) => theme.sizes.fonts.large};
+    color: ${({ theme }) => theme.colors.text};
+    font-weight: bold;
+`;
