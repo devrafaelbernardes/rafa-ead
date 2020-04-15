@@ -90,14 +90,16 @@ export const TextPortuguese = {
         },
         HOME: {
             NO_DESCRIPTION: 'Nenhum descrição.',
+            AUTHOR_TITLE: 'Autor do curso',
         },
         VIDEOS: {
             TITLE: 'Quantidade de vídeos:',
+            PLAYLIST_TITLE: 'Vídeos',
             BUTTON_VIEW: 'Ver detalhes',
             NOT_FOUND : 'Desculpe-me, mas não encontrei os vídeos desse curso.',
         },
         MENU: {
-            BUTTON_HOME: 'Início',
+            BUTTON_HOME: 'Sobre',
             BUTTON_VIDEOS: 'Videos',
         },
     },

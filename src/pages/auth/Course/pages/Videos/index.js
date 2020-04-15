@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, memo, useCallback } from 'react
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 
-import { Container, MainVideoContainer, VideosContainer, NotFoundContainer, ItemContainer, NotFoundTitle } from './styles';
+import { Container, MainVideoContainer, VideosContainer, NotFoundContainer, PlaylistTitle, ItemContainer, NotFoundTitle } from './styles';
 import objectQuery, { GET_COURSE_VIDEOS } from 'services/api/query';
 import ComponentLoading from 'components/ComponentLoading';
 import { COURSE, PAGINATION, COURSE_VIDEO, VIDEO } from 'services/api/responseAPI';
@@ -15,9 +15,13 @@ import CourseURL from 'routes/URLs/CourseURL';
 import { objectPagination } from 'services/api/config';
 
 const Item = memo(({ to, active = null, ...props }) => {
+    const scrollToTop = async () => {
+        window.scrollTo(0, 0);
+    }
     return (
         <ItemContainer
             to={to}
+            onClick={() => scrollToTop()}
             active={active ? String(active) : ""}
         >
             <ThumbVideo
@@ -34,7 +38,7 @@ export function Videos() {
     const { data, loading } = useQuery(GET_COURSE_VIDEOS, objectQuery({
         id: courseId,
         ...objectPagination({
-            orderBy: [{ column : COURSE_VIDEO.NAME }]
+            orderBy: [{ column: COURSE_VIDEO.NAME }]
         })
     }));
     const { indexVideo } = useParams();
@@ -47,7 +51,7 @@ export function Videos() {
         if (videos && indexVideo >= 0 && indexVideo < videos.length) {
             return indexVideo;
         }
-        return 0;
+        return null;
     }, [indexVideo, videos]);
 
     useEffect(() => {
@@ -68,17 +72,20 @@ export function Videos() {
                 {
                     videos && videos.length > 0 ? (
                         <>
-                            <MainVideoContainer>
-                                {
-                                    currentyVideo && currentyVideo[COURSE_VIDEO.VIDEO] &&
+                            {
+                                currentyVideo && currentyVideo[COURSE_VIDEO.VIDEO] &&
+                                <MainVideoContainer>
                                     <MainVideo
                                         videoUrl={currentyVideo[COURSE_VIDEO.VIDEO][VIDEO.URL]}
                                         name={currentyVideo[COURSE_VIDEO.NAME]}
                                         description={currentyVideo[COURSE_VIDEO.DESCRIPTION]}
                                     />
-                                }
-                            </MainVideoContainer>
+                                </MainVideoContainer>
+                            }
                             <VideosContainer>
+                                <PlaylistTitle>
+                                    {TEXTS.PLAYLIST_TITLE}
+                                </PlaylistTitle>
                                 <List
                                     items={videos}
                                     renderItem={(item, key) => {

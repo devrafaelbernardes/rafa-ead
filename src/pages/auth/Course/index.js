@@ -16,6 +16,7 @@ import objectSubscription, { COURSE_UPDATED } from 'services/api/subscription';
 
 export function Course() {
     const [course, setCourse] = useState(null);
+    const [instructor, setInstructor] = useState(null);
     const { id } = useParams();
     const { data, loading } = useQuery(GET_COURSE, objectQuery({ id }));
     const { data: dataUpdated } = useSubscription(COURSE_UPDATED, objectSubscription({ courseId: id }));
@@ -23,19 +24,24 @@ export function Course() {
 
     useEffect(() => {
         if (data && data.response) {
-            setCourse(data.response);
+            const courseResponse = data.response;
+            setCourse(courseResponse);
+            setInstructor(courseResponse[COURSE.INSTRUCTOR]);
         }
     }, [data]);
 
     useEffect(() => {
         if (dataUpdated && dataUpdated.response) {
-            setCourse(dataUpdated.response);
+            const courseResponse = dataUpdated.response;
+            setCourse(courseResponse);
+            setInstructor(courseResponse[COURSE.INSTRUCTOR]);
         }
     }, [dataUpdated]);
 
     let values = {
         id,
         course,
+        instructor,
     };
 
     return (
@@ -49,6 +55,7 @@ export function Course() {
                                     <Header>
                                         <HeaderAvatarContainer>
                                             <HeaderAvatar
+                                                size={100}
                                                 image={getImageUser(course[COURSE.PROFILE_IMAGE])}
                                                 title={course[COURSE.NAME]}
                                             />

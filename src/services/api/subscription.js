@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { IMAGE, STUDENT, COURSE } from './responseAPI';
+import { IMAGE, STUDENT, COURSE, ADMIN } from './responseAPI';
 
 
 export const STUDENT_UPDATED = gql`
@@ -26,6 +26,13 @@ export const COURSE_UPDATED = gql`
             ${COURSE.PURCHASE_LINK}
             ${COURSE.COUNT_STUDENTS}
             ${COURSE.COUNT_VIDEOS}
+            ${COURSE.INSTRUCTOR}{
+                ${ADMIN.FULL_NAME}
+                ${ADMIN.PROFILE_IMAGE}{
+                    ${IMAGE.ID}
+                    ${IMAGE.URL}
+                }
+            }
             ${COURSE.PROFILE_IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}
