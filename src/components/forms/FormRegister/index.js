@@ -7,7 +7,6 @@ import Form from 'components/forms/Form';
 import Input from 'components/Input';
 import InputPassword from 'components/InputPassword';
 import Texts from 'config/Texts';
-import { TOKEN_ACCESS, STUDENT_ACCESS } from 'services/api/responseAPI';
 import objectMutation, { DO_REGISTER } from 'services/api/mutation';
 import ContextApp from 'context/ContextApp';
 
@@ -48,21 +47,21 @@ export function FormRegister({ children, onSuccess, ...props }) {
                 email,
                 password
             }))
-                .then(async(response) => {
-                    if (response && response.data && response.data.response && response.data.response[STUDENT_ACCESS.TOKEN]) {
-                        const token = response.data.response[STUDENT_ACCESS.TOKEN][TOKEN_ACCESS.TOKEN];
+                .then(async (response) => {
+                    if (response && response.data && response.data.response && response.data.response) {
+                        const token = response.data.response;
                         if (token && doLogin) {
                             OKEY = true;
-                            if(onSuccess){
+                            if (onSuccess) {
                                 await onSuccess();
                             }
                             doLogin(token);
                         }
                     }
                 })
-                .catch(e => {})
+                .catch(e => { })
         } catch (error) { }
-        if(!OKEY){
+        if (!OKEY) {
             setResult(OKEY);
         }
     }

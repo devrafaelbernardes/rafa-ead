@@ -45,8 +45,13 @@ function ContentApp() {
 		(async() => {
 			if(data && data.response){
 				const user = data.response;
+				setAuthenticated(true);
 				setCurrentyUser(user);
 				setCurrentyUserImage(getImageUser(user[STUDENT.PROFILE_IMAGE]));
+			}else{
+				setAuthenticated(false);
+				setCurrentyUser(null);
+				setCurrentyUserImage(null);
 			}
 		})()
 	}, [reloading, data]);
