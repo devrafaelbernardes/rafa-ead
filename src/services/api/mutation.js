@@ -1,23 +1,15 @@
 import gql from 'graphql-tag';
-import { STUDENT_ACCESS, TOKEN_ACCESS, STUDENT, IMAGE, COURSE_STUDENT } from './responseAPI';
+import { STUDENT, IMAGE, COURSE_STUDENT } from './responseAPI';
 
 export const DO_LOGIN = gql`
     mutation MutationLoginStudent($input : InputLoginStudent){
-        response : loginStudent(input : $input){
-            ${STUDENT_ACCESS.TOKEN}{
-                ${TOKEN_ACCESS.TOKEN}
-            }
-        }
+        response : loginStudent(input : $input)
     }
 `;
 
 export const DO_REGISTER = gql`
     mutation MutationSignUpStudent($input : InputSignUpStudent){
-        response : signUpStudent(input : $input){
-            ${STUDENT_ACCESS.TOKEN}{
-                ${TOKEN_ACCESS.TOKEN}
-            }
-        }
+        response : signUpStudent(input : $input)
     }
 `;
 
