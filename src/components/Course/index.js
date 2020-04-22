@@ -12,7 +12,7 @@ export function Course({ image = null, title = null, description = null, link = 
             <Header as={componentHeader}>
                 <Image
                     fluid
-                    //src={image}
+                    src={image}
                     srcNoImage={NoImageSRC}
                 />
             </Header>
