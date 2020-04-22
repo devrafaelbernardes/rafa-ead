@@ -8,10 +8,15 @@ export const CourseURL = (id = "") => {
         BASE : `${base}/${indexVideo}`,
     });
 
+    const materials = (base) => ({
+        BASE : `${base}/`,
+    });
+
     const course = (base) => {
         base = `${base}/`;
         return ({
             BASE: formatURL(base),
+            MATERIALS: materials(formatURL(`${base}materials`)),
             VIDEOS: (indexVideo = ":indexVideo?") => videos(formatURL(`${base}videos`), indexVideo),
         })
     };

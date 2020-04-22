@@ -67,7 +67,7 @@ export const OptionMenu = styled(Link).attrs({activeClassName})`
     }
 
     @media screen and (max-width : ${({ theme }) => theme.sizes.md}){
-        padding: 15px;
+        padding: 10px;
         margin-left: 5px;
         margin-right: 5px;
         & > span{

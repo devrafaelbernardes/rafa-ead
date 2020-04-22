@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { STUDENT, IMAGE, PAGINATION, COURSE_PREVIEW, PAGE_INFO, COURSE, COURSE_VIDEO, VIDEO, ADMIN } from './responseAPI';
+import { STUDENT, IMAGE, PAGINATION, COURSE_PREVIEW, PAGE_INFO, COURSE, COURSE_VIDEO, VIDEO, ADMIN, COURSE_MATERIAL, MATERIAL } from './responseAPI';
 
 export const GET_CURRENTY_USER = gql`{   
     response : me_student{
@@ -15,7 +15,7 @@ export const GET_CURRENTY_USER = gql`{
 }`;
 
 export const GET_COURSES = gql`
-    query QueryGetMedias($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+    query QueryGetCoursePreviews($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
         response : courses_preview(pagination : $pagination, orderBy : $orderBy){
             ${PAGINATION.ITEMS} {
                 ${COURSE_PREVIEW.ID}
@@ -88,9 +88,33 @@ export const GET_COURSE_VIDEOS = gql`
                     ${COURSE_VIDEO.NAME}
                     ${COURSE_VIDEO.DESCRIPTION}
                     ${COURSE_VIDEO.CREATED_AT}
+                    ${COURSE_VIDEO.THUMBNAIL}{
+                        ${IMAGE.ID}
+                        ${IMAGE.URL}
+                    }
                     ${COURSE_VIDEO.VIDEO}{
                         ${VIDEO.ID}
                         ${VIDEO.URL}
+                    }
+                }
+            }
+        }
+    }
+`;
+
+export const GET_COURSE_MATERIALS = gql`
+    query QueryGetCourseVideos($id : ID, $pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+        response : course(id : $id){
+            ${COURSE.ID}
+            ${COURSE.MATERIALS}(pagination : $pagination, orderBy : $orderBy){
+                ${PAGINATION.TOTAL_ITEMS}
+                ${PAGINATION.ITEMS}{
+                    ${COURSE_MATERIAL.ID}
+                    ${COURSE_MATERIAL.NAME}
+                    ${COURSE_MATERIAL.CREATED_AT}
+                    ${COURSE_MATERIAL.MATERIAL}{
+                        ${MATERIAL.ID}
+                        ${MATERIAL.URL}
                     }
                 }
             }

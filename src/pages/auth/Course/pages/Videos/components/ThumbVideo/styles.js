@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { Row, Col } from 'react-bootstrap';
-import VideoPlayer from 'components/VideoPlayer';
+import Video from 'components/Video';
 
 export const Container = styled(Row)`
     padding: 0;
 `;
 
-export const MainPlayer = styled(VideoPlayer)`
+export const MainPlayer = styled(Video)`
     padding: 0;
 `;
 

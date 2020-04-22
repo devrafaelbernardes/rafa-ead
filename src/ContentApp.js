@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import styled from 'styled-components';
+import { useQuery, useSubscription } from '@apollo/react-hooks';
 
 import Global from 'styles/Global';
 import ContextApp from 'context/ContextApp';
 import RouterApp from 'routes/RouterApp';
-import { isAuthenticated, setToken, clearToken } from 'storage';
-import { useQuery, useSubscription } from '@apollo/react-hooks';
+import { setToken, clearToken, isAuthenticated } from 'storage';
 import { GET_CURRENTY_USER, getImageUser } from 'services/api/query';
 import { STUDENT } from 'services/api/responseAPI';
 import objectSubscription, { STUDENT_UPDATED } from 'services/api/subscription';
+import ComponentLoading from 'components/ComponentLoading';
 
 const Container = styled(Row)`
 	min-height: 100vh;
@@ -17,48 +18,49 @@ const Container = styled(Row)`
 
 function ContentApp() {
 	const [authenticated, setAuthenticated] = useState(isAuthenticated());
-	const [loading, setLoading] = useState(true);
-	const [reloading, setReloading] = useState(false);
 	const [currentyUser, setCurrentyUser] = useState(null);
 	const [currentyUserImage, setCurrentyUserImage] = useState(null);
-	const { data, refetch } = useQuery(GET_CURRENTY_USER);
-	const { data : dataUpdateUser } = useSubscription(STUDENT_UPDATED, objectSubscription({ adminId : currentyUser && currentyUser[STUDENT.ID] }));
+	const { data, loading, refetch, error } = useQuery(GET_CURRENTY_USER);
+	const { data: dataUpdateUser } = useSubscription(STUDENT_UPDATED, objectSubscription({ adminId: currentyUser && currentyUser[STUDENT.ID] }));
 
-	const reloadPage = () => setReloading(prev => !prev);
-	const startLoading = () => setLoading(true);
-	const stopLoading = () => setLoading(false);
+	const reloadPage = () => refetch();
 
-	const doLogin = async(token) => {
-		if(token){
+	const doLogin = async (token) => {
+		if (token) {
 			setAuthenticated(true);
 			await setToken(token);
 			await refetch();
 		}
 	}
 
-	const doLogout = async() => {
+	const doLogout = async () => {
 		await clearToken();
 		await setAuthenticated(false);
 	}
 
 	useEffect(() => {
-		(async() => {
-			if(data && data.response){
+		(async () => {
+			if(!data){
+				if(error){
+					await doLogout();
+				}
+				return;
+			}
+			
+			if (data && data.response) {
 				const user = data.response;
-				setAuthenticated(true);
 				setCurrentyUser(user);
 				setCurrentyUserImage(getImageUser(user[STUDENT.PROFILE_IMAGE]));
-			}else{
-				setAuthenticated(false);
-				setCurrentyUser(null);
-				setCurrentyUserImage(null);
+				setAuthenticated(true);
+			} else {
+				await doLogout();
 			}
 		})()
-	}, [reloading, data]);
+	}, [data, error]);
 
 	useEffect(() => {
-		(async() => {
-			if(dataUpdateUser && dataUpdateUser.response){
+		(async () => {
+			if (dataUpdateUser && dataUpdateUser.response) {
 				const user = dataUpdateUser.response;
 				setCurrentyUser(user);
 				setCurrentyUserImage(getImageUser(user[STUDENT.PROFILE_IMAGE]));
@@ -71,10 +73,7 @@ function ContentApp() {
 		currentyUser,
 		currentyUserImage,
 		loading,
-		reloading,
 		reloadPage,
-		startLoading,
-		stopLoading,
 		doLogin,
 		doLogout,
 	};
@@ -83,7 +82,9 @@ function ContentApp() {
 		<ContextApp.Provider value={values}>
 			<Container>
 				<Global />
-				<RouterApp />
+				<ComponentLoading loading={loading}>
+					<RouterApp />
+				</ComponentLoading>
 			</Container>
 		</ContextApp.Provider>
 	);

@@ -23,6 +23,10 @@ export function Menu({ ...props }) {
                     to: REDIRECT.VIDEOS("").BASE,
                     text: TEXTS.BUTTON_VIDEOS,
                 },
+                {
+                    to: REDIRECT.MATERIALS.BASE,
+                    text: TEXTS.BUTTON_MATERIALS,
+                },
             ]}
         />
     );

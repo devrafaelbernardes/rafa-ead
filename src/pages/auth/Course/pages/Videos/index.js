@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 
 import { Container, MainVideoContainer, VideosContainer, NotFoundContainer, PlaylistTitle, ItemContainer, NotFoundTitle } from './styles';
-import objectQuery, { GET_COURSE_VIDEOS } from 'services/api/query';
+import objectQuery, { GET_COURSE_VIDEOS, getImageUser } from 'services/api/query';
 import ComponentLoading from 'components/ComponentLoading';
 import { COURSE, PAGINATION, COURSE_VIDEO, VIDEO } from 'services/api/responseAPI';
 import ContextCourse from 'context/ContextCourse';
@@ -94,7 +94,7 @@ export function Videos() {
                                                 key={key}
                                                 active={String(key) === String(getCurrentyPos())}
                                                 to={LINK_VIEW(key)}
-                                                videoUrl={item[COURSE_VIDEO.VIDEO][VIDEO.URL]}
+                                                thumbnail={getImageUser(item[COURSE_VIDEO.THUMBNAIL])}
                                                 name={item[COURSE_VIDEO.NAME]}
                                                 createdAt={item[COURSE_VIDEO.CREATED_AT]}
                                             />

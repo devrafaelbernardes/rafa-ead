@@ -63,7 +63,7 @@ export const TextPortuguese = {
         BUTTON_REGISTER: 'Cadastre-se',
     },
     PAGE_REGISTER: {
-        TITLE: 'Crie uma conta conosco!',
+        TITLE: 'Crie sua conta!',
         OR: 'Ou',
         BUTTON_LOGON: 'Já possuo cadastro',
     },
@@ -92,6 +92,9 @@ export const TextPortuguese = {
             NO_DESCRIPTION: 'Nenhum descrição.',
             AUTHOR_TITLE: 'Autor do curso',
         },
+        MATERIALS: {
+            DESCRIPTION: 'Clique nos materiais para visualizá-los.',
+        },
         VIDEOS: {
             TITLE: 'Quantidade de vídeos:',
             PLAYLIST_TITLE: 'Vídeos',
@@ -100,6 +103,7 @@ export const TextPortuguese = {
         },
         MENU: {
             BUTTON_HOME: 'Sobre',
+            BUTTON_MATERIALS: 'Material complementar',
             BUTTON_VIDEOS: 'Videos',
         },
     },
@@ -129,7 +133,7 @@ export const TextPortuguese = {
     FORM_UPDATE_STUDENT: {
         NAME: 'Nome',
         LASTNAME: 'Sobrenome',
-        BUTTON_IMAGE: 'Escolher foto de perfil',
+        BUTTON_IMAGE: 'Alterar foto',
         BUTTON_SUBMIT: 'Atualizar',
         BUTTON_CANCEL: 'Cancelar',
         SUCCESS_UPDATE: 'Atualizado com sucesso.',

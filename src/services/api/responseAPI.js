@@ -52,11 +52,21 @@ export const COURSE = {
     PROFILE_IMAGE : 'profile_image',
     IS_ACTIVE : 'is_active',
     CREATED_AT : 'created_at',
+    MATERIALS : 'materials',
     STUDENTS : 'students',
     VIDEOS : 'videos',
+    COUNT_MATERIALS : 'count_materials',
     COUNT_STUDENTS : 'count_students',
     COUNT_VIDEOS : 'count_videos',
 };
+
+export const COURSE_MATERIAL = {
+    ID : 'id',
+    NAME : 'name',
+    MATERIAL : 'material',
+    IS_ACTIVE : 'is_active',
+    CREATED_AT : 'created_at',
+}
 
 export const COURSE_ACCESS = {
     ID : 'id',
@@ -93,11 +103,20 @@ export const COURSE_VIDEO = {
     NAME : 'name',
     DESCRIPTION : 'description',
     VIDEO : 'video',
+    THUMBNAIL : 'thumbnail',
     IS_ACTIVE : 'is_active',
     CREATED_AT : 'created_at',
 };
 
 export const IMAGE = {
+    ID : 'id',
+    NAME : 'name',
+    URL : 'url',
+    IS_ACTIVE : 'is_active',
+    CREATED_AT : 'created_at',
+};
+
+export const MATERIAL = {
     ID : 'id',
     NAME : 'name',
     URL : 'url',

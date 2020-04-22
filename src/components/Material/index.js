@@ -1,19 +1,22 @@
 import React from 'react';
 
-import NoImageSRC from 'assets/images/no-thumbnail.png';
+import imageSRC from 'assets/images/pdf.png';
 
 import { Container, Image, Title, Header, Body } from './styles';
+import Link from 'components/Link';
 
-export function Course({ image = null, title = null, description = null, link = "", componentHeader, componentBody, ...props }) {
+export function Material({ title = null, link = "", componentHeader, componentBody, ...props }) {
     return (
         <Container
             {...props}
+            as={link && Link}
+            href={link}
+            target={link && "_blank"}
         >
             <Header as={componentHeader}>
                 <Image
                     fluid
-                    //src={image}
-                    srcNoImage={NoImageSRC}
+                    src={imageSRC}
                 />
             </Header>
             <Body as={componentBody}>
@@ -25,4 +28,4 @@ export function Course({ image = null, title = null, description = null, link = 
         </Container>
     );
 }
-export default Course;
+export default Material;

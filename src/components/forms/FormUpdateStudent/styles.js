@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
 import { ButtonContained } from 'components/Button';
+import Avatar from 'components/Avatar';
+import { calcFontSizeAvatar } from 'utils/calcFontSize';
 
 export const Container = styled(Row)``;
 
@@ -18,6 +20,14 @@ export const ContainerInputFile = styled.div`
 export const StudentPreviewContainer = styled(Row)`
     padding: 0;
     margin-bottom: 10px;
+`;
+
+export const ProfileImage = styled(Avatar)`
+    @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
+        max-width: 100px !important;
+        max-height: 100px !important;
+        font-size: ${calcFontSizeAvatar(100)}px !important;
+    }
 `;
 
 export const BoxResult = styled(Row)`
