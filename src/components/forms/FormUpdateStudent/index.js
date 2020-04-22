@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { ThemeContext } from 'styled-components';
 
-import { Container, Line, Button, BoxResult, StudentPreviewContainer, ContainerInputFile } from './styles';
+import { Container, Line, Button, BoxResult, StudentPreviewContainer, ContainerInputFile, ProfileImage } from './styles';
 
 import Form from 'components/forms/Form';
 import Input from 'components/Input';
@@ -11,7 +11,6 @@ import InputFile from 'components/InputFile';
 import Texts from 'config/Texts';
 import { STUDENT, IMAGE } from 'services/api/responseAPI';
 import objectMutation, { UPDATE_STUDENT } from 'services/api/mutation';
-import Avatar from 'components/Avatar';
 import { GET_CURRENTY_USER } from 'services/api/query';
 import ComponentLoading from 'components/ComponentLoading';
 
@@ -96,7 +95,7 @@ export function FormUpdateStudent({ ...props }) {
                     onSubmit={() => update()}
                 >
                     <StudentPreviewContainer>
-                        <Avatar
+                        <ProfileImage
                             size={200}
                             title={name}
                             image={imagePreview}

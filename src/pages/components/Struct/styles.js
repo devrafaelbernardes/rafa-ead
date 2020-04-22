@@ -22,7 +22,7 @@ export const LeftContainer = styled.div`
     background: ${({ theme, color }) => color || theme.colors.backgrounds.primary_light};
 
     @media screen and (max-width : ${({ theme }) => theme.sizes.md}){
-        max-width: 70px;
+        max-width: 55px;
     }
 `;
 
@@ -37,6 +37,6 @@ export const RightContainer = styled.div`
 
     @media screen and (max-width : ${({ theme }) => theme.sizes.md}){
         max-width: 100% !important;
-        padding-left: 70px;
+        padding-left: 55px;
     }
 `;

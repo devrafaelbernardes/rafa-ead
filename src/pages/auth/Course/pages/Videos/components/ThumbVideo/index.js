@@ -3,13 +3,12 @@ import React from 'react';
 import { Container, ThumbContainer, Info, Title, Subtitle, MainPlayer } from './styles';
 import { toDate } from 'utils/convertValue';
 
-export function ThumbVideo({ videoUrl, name, createdAt, ...props }) {
+export function ThumbVideo({ thumbnail, name, createdAt, ...props }) {
     return (
         <Container {...props}>
             <ThumbContainer>
                 <MainPlayer
-                    controls={false}
-                    url={videoUrl}
+                    thumbnail={thumbnail}
                 />
             </ThumbContainer>
             <Info>
