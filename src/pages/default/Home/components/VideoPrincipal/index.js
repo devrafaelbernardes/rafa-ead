@@ -7,7 +7,7 @@ export function VideoPrincipal({ children, ...props }) {
         <Container {...props}>
             <General>
                 <Video
-                    url={"https://www.youtube.com/watch?v=ZtMzB5CoekE"}
+                    url={"https://youtu.be/9iCQvBva_E4"}
                 />
             </General>
         </Container>
