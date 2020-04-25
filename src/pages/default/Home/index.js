@@ -4,7 +4,7 @@ import { Container, Header, Body, Footer, Box, Subbox, Title } from './styles';
 
 import Copyright from 'components/Copyright';
 
-//import VideoPrincipal from './components/VideoPrincipal';
+import VideoPrincipal from './components/VideoPrincipal';
 import Courses from './components/Courses';
 import Texts from 'config/Texts';
 
@@ -14,9 +14,9 @@ export function Home() {
         <Container>
             <Header />
             <Body>
-                {/* <Box>
+                <Box>
                     <VideoPrincipal />
-                </Box> */}
+                </Box>
                 <Box>
                     <Subbox>
                         <Title>
