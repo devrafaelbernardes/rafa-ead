@@ -17,6 +17,24 @@ export const TextPortuguese = {
     BUTTON: {
         OPTIONAL: 'Opcional',
     },
+    ALERT_VALIDATE_EMAIL: {
+        TITLE: 'Oie, preciso que você valide seu cadastro.',
+
+        INITIAL : {
+            TITLE: 'Você recebeu o email de verificação?',
+            BUTTON_RESEND: 'Enviar email',
+            BUTTON_NO: 'Não',
+            BUTTON_YES: 'Sim',
+        },
+        RESEND : {
+            TITLE: 'Email enviado novamente. Por favor, veja o email enviado e valide seu cadastro.',
+            BUTTON_YES: 'Validei',
+        },
+        SUCCESS : {
+            TITLE: 'Você já clicou no link?',
+            BUTTON_YES: 'Sim',
+        }
+    },
     REMOVE_CONTAINER: {
         TITLE: 'Quer mesmo remover?',
         REMOVE: 'Sim',
@@ -26,41 +44,54 @@ export const TextPortuguese = {
         OPTIONAL: 'Opcional',
     },
     PAGE_DEFAULT_REGISTER_COURSE: {
-        HOME : {
-            BUTTON_REGISTER_COURSE : 'Entrar no curso',
-            BUTTON_REGISTER : 'Cadastre-se',
-            BUTTON_LOGON : 'Faça login',
-            OR : 'Ou',
-            ERROR : 'Desculpe-me, mas deu algum erro.',
+        HOME: {
+            BUTTON_REGISTER_COURSE: 'Entrar no curso',
+            BUTTON_REGISTER: 'Cadastre-se',
+            BUTTON_LOGON: 'Faça login',
+            OR: 'Ou',
+            ERROR: 'Desculpe-me, mas deu algum erro.',
         },
-        LOGON : {
+        LOGON: {
         },
-        REGISTER : {
+        REGISTER: {
         },
     },
     PAGE_DEFAULT_HOME: {
-        TEXTS : {
-            COURSES_TITLE : 'Cursos',
-            BUTTON_BUY : 'Adquirir curso',
-            BUTTON_LOAD_MORE_COURSES : 'Ver mais cursos',
+        TEXTS: {
+            COURSES_TITLE: 'Cursos',
+            BUTTON_BUY: 'Adquirir curso',
+            BUTTON_LOAD_MORE_COURSES: 'Ver mais cursos',
         },
-        HEADER : {
-            BUTTON_HOME : 'Início',
-            BUTTON_REGISTER : 'Cadastre-se',
-            BUTTON_LOGON : 'Login',
+        HEADER: {
+            BUTTON_BUY_COURSES: 'Adquirir curso',
+            BUTTON_HOME: 'Início',
+            BUTTON_REGISTER: 'Cadastre-se',
+            BUTTON_LOGON: 'Login',
         },
     },
+    HEADER_DEFAULT: {
+        BUTTON_BUY_COURSES: 'Adquirir curso',
+        BUTTON_HOME: 'Início',
+        BUTTON_REGISTER: 'Cadastre-se',
+        BUTTON_LOGON: 'Login',
+    },
     PAGE_AUTH_HOME: {
-        TEXTS : {
-            TITLE : 'Meus cursos',
-            BUTTON_ENTER_COURSE : 'Entrar',
-            BUTTON_LOAD_MORE_COURSES : 'Ver mais cursos',
+        TEXTS: {
+            TITLE: 'Meus cursos',
+            BUTTON_ENTER_COURSE: 'Entrar',
+            BUTTON_LOAD_MORE_COURSES: 'Ver mais cursos',
         },
     },
     PAGE_LOGON: {
         TITLE: 'Bem-vindo de volta!',
         OR: 'Ou',
         BUTTON_REGISTER: 'Cadastre-se',
+    },
+    PAGE_RESET_PASSWORD: {
+        TITLE: 'Trocar senha',
+    },
+    PAGE_FORGOT_PASSWORD: {
+        TITLE: 'Esqueci minha senha',
     },
     PAGE_REGISTER: {
         TITLE: 'Crie sua conta!',
@@ -76,10 +107,10 @@ export const TextPortuguese = {
         NOT_FOUND: 'Me desculpa, não encontrei ninguém.',
     },
     PAGE_AUTH_PROFILE: {
-        HEADER : {
+        HEADER: {
             TITLE: 'Meu perfil',
         },
-        MENU : {
+        MENU: {
             BUTTON_HOME: 'Informações',
             BUTTON_UPDATE_PASSWORD: 'Alterar senha',
         },
@@ -99,7 +130,7 @@ export const TextPortuguese = {
             TITLE: 'Quantidade de vídeos:',
             PLAYLIST_TITLE: 'Vídeos',
             BUTTON_VIEW: 'Ver detalhes',
-            NOT_FOUND : 'Desculpe-me, mas não encontrei os vídeos desse curso.',
+            NOT_FOUND: 'Desculpe-me, mas não encontrei os vídeos desse curso.',
         },
         MENU: {
             BUTTON_HOME: 'Sobre',
@@ -107,19 +138,45 @@ export const TextPortuguese = {
             BUTTON_VIDEOS: 'Videos',
         },
     },
+    PAGE_VALIDATE_EMAIL: {
+        SUCCESS: 'Cadastro validado com sucesso!',
+        ERROR: 'Erro ao validar o cadastro, por favor tente novamente mais tarde!',
+        BUTTON_HOME: 'Voltar',
+    },
     FORM_LOGON: {
         TITLE: 'Login',
         EMAIL: 'E-mail',
-        PASSWORD: `Senha`,
+        PASSWORD: 'Senha',
+        FORGOT_PASSWORD: 'Esqueceu sua senha?',
         BUTTON_SUBMIT: 'Entrar',
         LOGIN_ERROR: 'Login inválido, verifique seus dados.',
+    },
+    FORM_FORGOT_PASSWORD: {
+        TITLE: 'Esqueceu sua senha?',
+        SUBTITLE: 'Me diga o seu email.',
+        EMAIL: 'E-mail',
+        BUTTON_SUBMIT: 'Enviar',
+        SUCCESS: 'Foi enviado um email com o passo a passo para alterar sua senha.',
+        ERROR: 'Erro ao enviar o email, verifique seus dados.',
+    },
+    FORM_RESET_PASSWORD: {
+        TITLE: 'Altere sua senha',
+        EMAIL: 'E-mail',
+        PASSWORD: 'Nova senha',
+        BUTTON_SUBMIT: 'Enviar',
+        NOT_FOUND: 'Link expirado!',
+        SUCCESS: 'Senha alterada com sucesso.',
+        ERROR: 'Erro ao alterar sua senha, verifique seus dados.',
     },
     FORM_REGISTER: {
         TITLE: 'Cadastro',
         NAME: 'Nome',
         LASTNAME: 'Sobrenome',
         EMAIL: 'E-mail',
-        PASSWORD: `Senha`,
+        TERMS: 'Termos de uso',
+        PASSWORD: 'Senha',
+        DESCRIPTION_TERMS_START: 'Ao registrar-se você estará concordando com nossos',
+        DESCRIPTION_TERMS_END: '.',
         BUTTON_SUBMIT: 'Registrar',
         REGISTER_ERROR: 'Cadastro inválido, verifique seus dados, ou se você já possui conta.',
     },

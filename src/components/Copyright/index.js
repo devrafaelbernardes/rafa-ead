@@ -5,7 +5,7 @@ import Texts from 'config/Texts';
 
 export function Copyright({ children, center = false, ...props }) {
     const TEXTS = Texts.COPYRIGHT;
-    const align = center ? { justifyContent : "center" } : null;
+    const align = center ? { justifyContent : "center", textAlign : "center" } : null;
     return (
         <Container {...props}>
             <Line style={align}>

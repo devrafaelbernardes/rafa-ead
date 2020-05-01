@@ -26,6 +26,7 @@ export const UPDATE_STUDENT = gql`
             ${STUDENT.NAME}
             ${STUDENT.LASTNAME}
             ${STUDENT.FULL_NAME}
+            ${STUDENT.IS_VALIDATED_EMAIL}
             ${STUDENT.PROFILE_IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}
@@ -39,6 +40,30 @@ export const ADD_COURSE_STUDENT = gql`
         response : addCourseStudent(input : $input){
             ${COURSE_STUDENT.ID}
         }
+    }
+`;
+
+export const VALIDATE_EMAIL = gql`
+    mutation MutationValidateEmailStudent($input : InputValidateEmail){
+        response: validateEmailStudent(input : $input)
+    }
+`;
+
+export const RESEND_VALIDATE_EMAIL = gql`
+    mutation MutationResendValidateEmailStudent{
+        response: resendValidateEmailStudent
+    }
+`;
+
+export const RESET_PASSWORD = gql`
+    mutation MutationResetPasswordStudent($input : InputResetPassword){
+        response: resetPasswordStudent(input : $input)
+    }
+`;
+
+export const FORGOT_PASSWORD = gql`
+    mutation MutationSendForgotPasswordStudent($input : InputSendForgotPassword){
+        response: sendForgotPasswordStudent(input : $input)
     }
 `;
 

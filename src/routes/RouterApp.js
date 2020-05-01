@@ -7,9 +7,17 @@ import LogonURL from 'routes/URLs/LogonURL';
 import RegisterURL from 'routes/URLs/RegisterURL';
 import RegisterCourseURL from 'routes/URLs/RegisterCourseURL';
 import ProfileURL from 'routes/URLs/ProfileURL';
+import ForgotPasswordURL from './URLs/ForgotPasswordURL';
+import ResetPasswordURL from './URLs/ResetPasswordURL';
+import ValidateEmailURL from 'routes/URLs/ValidateEmailURL';
+import CourseURL from './URLs/CourseURL';
 
 // ERROR PAGES
 import PageNotFound from 'pages/errors/PageNotFound';
+
+// PAGES ANY
+import RegisterCourse from 'pages/any/RegisterCourse';
+import ValidateEmail from 'pages/any/ValidateEmail';
 
 // PAGES AUTH
 import HomeAuth from 'pages/auth/Home';
@@ -20,8 +28,8 @@ import Course from 'pages/auth/Course';
 import HomeDefault from 'pages/default/Home';
 import Logon from 'pages/default/Logon';
 import Register from 'pages/default/Register';
-import RegisterCourse from 'pages/default/RegisterCourse';
-import CourseURL from './URLs/CourseURL';
+import ForgotPassword from 'pages/default/ForgotPassword';
+import ResetPassword from 'pages/default/ResetPassword';
 
 export function RouterApp() {
     const CONNECTED_LINK = HomeURL().REDIRECT.BASE;
@@ -41,9 +49,14 @@ export function RouterApp() {
                 redirectAuthenticatedURL={CONNECTED_LINK}
             />
             <ProtectedRoute
-                path={RegisterCourseURL().ROUTER.BASE}
-                componentAuthenticated={RegisterCourse}
-                componentNotAuthenticated={RegisterCourse}
+                path={ForgotPasswordURL().ROUTER.BASE}
+                componentNotAuthenticated={ForgotPassword}
+                redirectAuthenticatedURL={CONNECTED_LINK}
+            />
+            <ProtectedRoute
+                path={ResetPasswordURL().ROUTER.BASE}
+                componentNotAuthenticated={ResetPassword}
+                redirectAuthenticatedURL={CONNECTED_LINK}
             />
 
             { /* AUTH */}
@@ -65,6 +78,17 @@ export function RouterApp() {
             />
 
             { /* ANY */}
+            <ProtectedRoute
+                path={RegisterCourseURL().ROUTER.BASE}
+                componentAuthenticated={RegisterCourse}
+                componentNotAuthenticated={RegisterCourse}
+            />
+            <ProtectedRoute
+                path={ValidateEmailURL().ROUTER.BASE}
+                componentAuthenticated={ValidateEmail}
+                componentNotAuthenticated={ValidateEmail}
+            />
+
             <ProtectedRoute
                 componentAuthenticated={PageNotFound}
                 componentNotAuthenticated={PageNotFound}

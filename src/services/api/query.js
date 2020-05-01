@@ -7,6 +7,7 @@ export const GET_CURRENTY_USER = gql`{
         ${STUDENT.NAME}
         ${STUDENT.LASTNAME}
         ${STUDENT.FULL_NAME}
+        ${STUDENT.IS_VALIDATED_EMAIL}
         ${STUDENT.PROFILE_IMAGE}{
             ${IMAGE.ID}
             ${IMAGE.URL}
@@ -134,6 +135,13 @@ export const GET_REGISTER_COURSE = gql`
         }
     }
 `;
+
+export const IS_VALID_TOKEN_RESET_PASSWORD = gql`
+    query QueryValidateTokenResetPassword($token : String!){
+        response : is_valid_token_reset_password(token : $token)
+    }
+`;
+
 
 export const getImageUser = (image) => {
     return image && image[IMAGE.URL];

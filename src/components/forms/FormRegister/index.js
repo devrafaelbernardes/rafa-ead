@@ -2,13 +2,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ThemeContext } from 'styled-components';
 
-import { Container, Line, Title, Button, BoxResult } from './styles';
+import { Container, Line, Title, Button, BoxResult, DescriptionTerms, LinkTermsContainer } from './styles';
 import Form from 'components/forms/Form';
 import Input from 'components/Input';
 import InputPassword from 'components/InputPassword';
 import Texts from 'config/Texts';
 import objectMutation, { DO_REGISTER } from 'services/api/mutation';
 import ContextApp from 'context/ContextApp';
+import Link from 'components/Link';
+import TermsURL from 'routes/URLs/TermsURL';
 
 export function FormRegister({ children, onSuccess, ...props }) {
     const [name, setName] = useState("");
@@ -110,6 +112,23 @@ export function FormRegister({ children, onSuccess, ...props }) {
                         placeholder={TEXTS.PASSWORD}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                </Line>
+                <Line>
+                    <DescriptionTerms>
+                        <span>
+                            {TEXTS.DESCRIPTION_TERMS_START}
+                        </span>
+                        <LinkTermsContainer>
+                            <Link
+                                to={TermsURL().REDIRECT.BASE}
+                            >
+                                {TEXTS.TERMS}
+                            </Link>
+                        </LinkTermsContainer>
+                        <span>
+                            {TEXTS.DESCRIPTION_TERMS_END}
+                        </span>
+                    </DescriptionTerms>
                 </Line>
                 {
                     (result === false) &&

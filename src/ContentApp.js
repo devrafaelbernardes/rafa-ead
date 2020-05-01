@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import { useQuery, useSubscription } from '@apollo/react-hooks';
 
 import Global from 'styles/Global';
 import ContextApp from 'context/ContextApp';
 import RouterApp from 'routes/RouterApp';
 import { setToken, clearToken, isAuthenticated } from 'storage';
-import { GET_CURRENTY_USER, getImageUser } from 'services/api/query';
+import { getImageUser } from 'services/api/query';
 import { STUDENT } from 'services/api/responseAPI';
-import objectSubscription, { STUDENT_UPDATED } from 'services/api/subscription';
 import ComponentLoading from 'components/ComponentLoading';
+import { useAuth } from 'services/hooks';
 
 const Container = styled(Row)`
 	min-height: 100vh;
@@ -18,11 +17,11 @@ const Container = styled(Row)`
 
 function ContentApp() {
 	const [authenticated, setAuthenticated] = useState(isAuthenticated());
+	const [isValidatedEmail, setIsValidatedEmail] = useState(false);
 	const [currentyUser, setCurrentyUser] = useState(null);
 	const [currentyUserImage, setCurrentyUserImage] = useState(null);
-	const { data, loading, refetch, error } = useQuery(GET_CURRENTY_USER);
-	const { data: dataUpdateUser } = useSubscription(STUDENT_UPDATED, objectSubscription({ adminId: currentyUser && currentyUser[STUDENT.ID] }));
-
+	const { data, loading, refetch, error } = useAuth();
+	
 	const reloadPage = () => refetch();
 
 	const doLogin = async (token) => {
@@ -47,26 +46,18 @@ function ContentApp() {
 				return;
 			}
 			
-			if (data && data.response) {
-				const user = data.response;
+			if (data) {
+				const user = data;
 				setCurrentyUser(user);
+				setIsValidatedEmail(user[STUDENT.IS_VALIDATED_EMAIL] === true);
 				setCurrentyUserImage(getImageUser(user[STUDENT.PROFILE_IMAGE]));
 				setAuthenticated(true);
+				return;
 			} else {
 				await doLogout();
 			}
 		})()
 	}, [data, error]);
-
-	useEffect(() => {
-		(async () => {
-			if (dataUpdateUser && dataUpdateUser.response) {
-				const user = dataUpdateUser.response;
-				setCurrentyUser(user);
-				setCurrentyUserImage(getImageUser(user[STUDENT.PROFILE_IMAGE]));
-			}
-		})()
-	}, [dataUpdateUser]);
 
 	let values = {
 		authenticated,
@@ -76,6 +67,7 @@ function ContentApp() {
 		reloadPage,
 		doLogin,
 		doLogout,
+		isValidatedEmail,
 	};
 
 	return (
