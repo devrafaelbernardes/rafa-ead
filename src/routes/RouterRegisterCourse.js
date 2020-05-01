@@ -6,9 +6,9 @@ import RegisterCourseURL from 'routes/URLs/RegisterCourseURL';
 import ErrorURL from 'routes/URLs/ErrorURL';
 
 // PAGES AUTH
-import Home from 'pages/default/RegisterCourse/pages/Home';
-import Logon from 'pages/default/RegisterCourse/pages/Logon';
-import Register from 'pages/default/RegisterCourse/pages/Register';
+import Home from 'pages/any/RegisterCourse/pages/Home';
+import Logon from 'pages/any/RegisterCourse/pages/Logon';
+import Register from 'pages/any/RegisterCourse/pages/Register';
 
 export function RouterRegisterCourse() {
     const ROUTER = RegisterCourseURL().ROUTER;

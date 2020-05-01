@@ -25,6 +25,20 @@ export const BoxResult = styled(Row)`
     color : ${({ color, theme }) => color || theme.colors.text };
 `;
 
+export const DescriptionTerms = styled(Row)`
+    font-size : ${({ theme }) => theme.sizes.fonts.small };
+    color : ${({ theme }) => theme.colors.text };
+    text-transform: initial;
+
+    & > span{
+        padding-right: 5px;
+    }
+`;
+
+export const LinkTermsContainer = styled.div`
+    padding: 0;
+`;
+
 export const Button = styled(ButtonContained)`
     width: 100%;
     margin-top: 5px;

@@ -1,8 +1,16 @@
 import React from 'react';
 
-import { Container, Header, Body, Footer, Box, Subbox, Title } from './styles';
-
-import Copyright from 'components/Copyright';
+import {
+    Container,
+    Header,
+    Body,
+    Footer,
+    Box,
+    Subbox,
+    Title,
+    GeneralContainerPrincipalVideo,
+    ContainerPrincipalVideo,
+} from './styles';
 
 import VideoPrincipal from './components/VideoPrincipal';
 import Courses from './components/Courses';
@@ -15,7 +23,11 @@ export function Home() {
             <Header />
             <Body>
                 <Box>
-                    <VideoPrincipal />
+                    <GeneralContainerPrincipalVideo>
+                        <ContainerPrincipalVideo>
+                            <VideoPrincipal />
+                        </ContainerPrincipalVideo>
+                    </GeneralContainerPrincipalVideo>
                 </Box>
                 <Box>
                     <Subbox>
@@ -26,9 +38,7 @@ export function Home() {
                     <Courses />
                 </Box>
             </Body>
-            <Footer>
-                <Copyright center />
-            </Footer>
+            <Footer />
         </Container>
     );
 }

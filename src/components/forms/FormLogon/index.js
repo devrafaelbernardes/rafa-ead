@@ -2,13 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ThemeContext } from 'styled-components';
 
-import { Container, Line, Title, Button, BoxResult } from './styles';
+import { Container, Line, Title, Button, BoxResult, ForgotPasswordButton } from './styles';
 import Form from 'components/forms/Form';
 import Input from 'components/Input';
 import InputPassword from 'components/InputPassword';
 import Texts from 'config/Texts';
 import objectMutation, { DO_LOGIN } from 'services/api/mutation';
 import ContextApp from 'context/ContextApp';
+import ForgotPasswordURL from 'routes/URLs/ForgotPasswordURL';
 
 export function FormLogon({ children, onSuccess, ...props }) {
     const [email, setEmail] = useState("");
@@ -44,7 +45,7 @@ export function FormLogon({ children, onSuccess, ...props }) {
                 password
             }))
                 .then(async (response) => {
-                    if (response && response.data && response.data.response && response.data.response) {
+                    if (response && response.data && response.data.response) {
                         const token = response.data.response;
                         if (token && doLogin) {
                             OKEY = true;
@@ -88,6 +89,13 @@ export function FormLogon({ children, onSuccess, ...props }) {
                         placeholder={TEXTS.PASSWORD}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                </Line>
+                <Line>
+                    <ForgotPasswordButton
+                        to={ForgotPasswordURL().REDIRECT.BASE}
+                    >
+                        {TEXTS.FORGOT_PASSWORD}
+                    </ForgotPasswordButton>
                 </Line>
                 {
                     (result === false) &&

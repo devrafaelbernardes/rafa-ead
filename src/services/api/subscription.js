@@ -9,6 +9,7 @@ export const STUDENT_UPDATED = gql`
             ${STUDENT.NAME}
             ${STUDENT.LASTNAME}
             ${STUDENT.FULL_NAME}
+            ${STUDENT.IS_VALIDATED_EMAIL}
             ${STUDENT.PROFILE_IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}

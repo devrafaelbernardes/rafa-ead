@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
-import HeaderDefault from './components/Header'
+import HeaderDefault from 'pages/components/HeaderDefault'
 import AlignContainer from 'components/AlignContainer';
+import FooterDefault from 'pages/components/FooterDefault';
 
 export const Container = styled(Row)`
     flex-direction: column;
@@ -14,6 +15,14 @@ export const Body = styled(Row)``;
 
 export const Box = styled(Row)`
     margin-top: 50px;
+`;
+
+export const GeneralContainerPrincipalVideo = styled(Row)`
+    justify-content: center;
+`;
+
+export const ContainerPrincipalVideo = styled(Row)`
+    max-width: 850px;
 `;
 
 export const Subbox = styled(Row)`
@@ -29,8 +38,4 @@ export const Title = styled(AlignContainer)`
     text-transform: uppercase;
 `;
 
-export const Footer = styled(Row)`
-    padding-bottom: 30px;
-    margin-top: 50px;
-    justify-content: center;
-`;
+export const Footer = styled(FooterDefault)``;
