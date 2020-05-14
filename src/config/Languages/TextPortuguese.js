@@ -21,7 +21,7 @@ export const TextPortuguese = {
         TITLE: 'Oie, preciso que você valide seu cadastro.',
 
         INITIAL : {
-            TITLE: 'Você recebeu o email de verificação?',
+            TITLE: 'Você recebeu o email de verificação, clicou em "Validar cadastro" e deu tudo certo?',
             BUTTON_RESEND: 'Enviar email',
             BUTTON_NO: 'Não',
             BUTTON_YES: 'Sim',
@@ -140,7 +140,7 @@ export const TextPortuguese = {
     },
     PAGE_VALIDATE_EMAIL: {
         SUCCESS: 'Cadastro validado com sucesso!',
-        ERROR: 'Erro ao validar o cadastro, por favor tente novamente mais tarde!',
+        ERROR: 'Oie, você já validou o seu cadastro, ou o seu link expirou!',
         BUTTON_HOME: 'Voltar',
     },
     FORM_LOGON: {
