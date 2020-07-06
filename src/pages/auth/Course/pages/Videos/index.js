@@ -45,7 +45,7 @@ export function Videos() {
 
     const TEXTS = Texts.PAGE_AUTH_COURSE.VIDEOS;
 
-    const LINK_VIEW = (pos) => CourseURL(courseId).REDIRECT.VIDEOS(pos).BASE;
+    const linkView = (pos) => CourseURL(courseId).REDIRECT.VIDEOS(pos).BASE;
 
     const getCurrentyPos = useCallback(() => {
         if (videos && indexVideo >= 0 && indexVideo < videos.length) {
@@ -93,7 +93,7 @@ export function Videos() {
                                             <Item
                                                 key={key}
                                                 active={String(key) === String(getCurrentyPos())}
-                                                to={LINK_VIEW(key)}
+                                                to={linkView(key)}
                                                 thumbnail={getImageUser(item[COURSE_VIDEO.THUMBNAIL])}
                                                 name={item[COURSE_VIDEO.NAME]}
                                                 createdAt={item[COURSE_VIDEO.CREATED_AT]}

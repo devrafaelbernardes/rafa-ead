@@ -2,9 +2,10 @@ import React from 'react';
 
 import NoImageSRC from 'assets/images/no-thumbnail.png';
 
-import { Container, Image, Title, Header, Body } from './styles';
+import { Container, Expiration, Image, Title, Header, Body } from './styles';
+import { toDateExpiration } from 'utils/convertValue';
 
-export function Course({ image = null, title = null, description = null, link = "", componentHeader, componentBody, ...props }) {
+export function Course({ image = null, title = null, expiration = null, description = null, link = "", componentHeader, componentBody, ...props }) {
     return (
         <Container
             {...props}
@@ -20,6 +21,10 @@ export function Course({ image = null, title = null, description = null, link = 
                 {
                     title &&
                     <Title>{title}</Title>
+                }
+                {
+                    expiration &&
+                    <Expiration>{toDateExpiration(expiration)}</Expiration>
                 }
             </Body>
         </Container>

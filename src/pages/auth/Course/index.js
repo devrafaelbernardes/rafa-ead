@@ -4,7 +4,7 @@ import { useQuery, useSubscription } from '@apollo/react-hooks';
 
 import { Container, Header, Body, Menu, NotFoundContainer, NotFoundTitle, HeaderAvatarContainer, HeaderAvatar, HeaderTitle } from './styles';
 
-import { COURSE } from 'services/api/responseAPI';
+import { COURSE, COURSE_STUDENT } from 'services/api/responseAPI';
 import objectQuery, { GET_COURSE, getImageUser } from 'services/api/query';
 
 import Struct from 'pages/components/Struct';
@@ -16,6 +16,7 @@ import objectSubscription, { COURSE_UPDATED } from 'services/api/subscription';
 
 export function Course() {
     const [course, setCourse] = useState(null);
+    const [courseExpiration, setCourseExpiration] = useState(null);
     const [instructor, setInstructor] = useState(null);
     const { id } = useParams();
     const { data, loading } = useQuery(GET_COURSE, objectQuery({ id }));
@@ -25,8 +26,12 @@ export function Course() {
     useEffect(() => {
         if (data && data.response) {
             const courseResponse = data.response;
+            const courseStudent = data.courseStudent;
             setCourse(courseResponse);
             setInstructor(courseResponse[COURSE.INSTRUCTOR]);
+            if(courseStudent && courseStudent[COURSE_STUDENT.EXPIRES_AT]){
+                setCourseExpiration(courseStudent[COURSE_STUDENT.EXPIRES_AT]);
+            }
         }
     }, [data]);
 
@@ -42,6 +47,7 @@ export function Course() {
         id,
         course,
         instructor,
+        courseExpiration,
     };
 
     return (

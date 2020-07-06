@@ -5,6 +5,15 @@ export const TextPortuguese = {
     LOADING: {
         TITLE: 'Carregando',
     },
+    DATE_EXPIRATION: {
+        UNLIMITED: 'Tempo indeterminado',
+        AND: 'e',
+        ONE_MONTH: 'mês',
+        MANY_MONTHS: 'meses',
+        MANY_DAYS: 'dias',
+        ONE_YEAR: 'ano',
+        MANY_YEARS: 'anos',
+    },
     COPYRIGHT: {
         TITLE: `Copyright © ${SITE_NAME} - Todos os direitos reservados`,
         SUBTITLE: `Desenvolvido por`,
@@ -120,6 +129,7 @@ export const TextPortuguese = {
             NOT_FOUND: 'Curso não encontrado.',
         },
         HOME: {
+            ACCESS: 'Seu acesso expira no dia',
             NO_DESCRIPTION: 'Nenhum descrição.',
             AUTHOR_TITLE: 'Autor do curso',
         },

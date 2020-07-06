@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 
-import { Container, Description, AuthorContainer, AuthorTitle, AuthorInfo, AuthorAvatar, AuthorName } from './styles';
+import { Container, Access, Description, AuthorContainer, AuthorTitle, AuthorInfo, AuthorAvatar, AuthorName } from './styles';
 
 import ContextCourse from 'context/ContextCourse';
 import { COURSE, ADMIN } from 'services/api/responseAPI';
-import { toHTML } from 'utils/convertValue';
+import { toHTML, toDate } from 'utils/convertValue';
 import Texts from 'config/Texts';
 import { getImageUser } from 'services/api/query';
 
 export function Home() {
-    let { course, instructor } = useContext(ContextCourse);
+    let { course, instructor, courseExpiration } = useContext(ContextCourse);
     const TEXTS = Texts.PAGE_AUTH_COURSE.HOME;
 
     return (
@@ -35,6 +35,13 @@ export function Home() {
                     </AuthorInfo>
                 }
             </AuthorContainer>
+            
+            {
+                courseExpiration &&
+                <Access>
+                    {TEXTS.ACCESS}: <span>{toDate(courseExpiration)}</span>
+                </Access>
+            }
         </Container>
     );
 }

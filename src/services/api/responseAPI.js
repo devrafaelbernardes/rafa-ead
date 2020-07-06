@@ -48,6 +48,7 @@ export const COURSE = {
     NAME : 'name',
     DESCRIPTION : 'description',
     PURCHASE_LINK : 'purchase_link',
+    MONTHS_TO_EXPIRES : 'months_to_expires',
     INSTRUCTOR : 'instructor',
     PROFILE_IMAGE : 'profile_image',
     IS_ACTIVE : 'is_active',
@@ -71,8 +72,8 @@ export const COURSE_MATERIAL = {
 export const COURSE_ACCESS = {
     ID : 'id',
     CURRENTY_STATE : 'currenty_state',
-    EMAIL : 'email',
     TOKEN : 'token',
+    EMAIL : 'email',
     COURSE : 'course',
     STUDENT : 'student',
     IS_ACTIVE : 'is_active',
@@ -84,6 +85,7 @@ export const COURSE_PREVIEW = {
     NAME : 'name',
     DESCRIPTION : 'description',
     PURCHASE_LINK : 'purchase_link',
+    MONTHS_TO_EXPIRES : 'months_to_expires',
     IS_ACTIVE : 'is_active',
     CREATED_AT : 'created_at',
     INSTRUCTOR : 'instructor',
@@ -95,6 +97,7 @@ export const COURSE_PREVIEW = {
 export const COURSE_STUDENT = {
     ID : 'id',
     STUDENT : 'student',
+    EXPIRES_AT : 'expires_at',
     IS_ACTIVE : 'is_active',
     CREATED_AT : 'created_at',
 };
