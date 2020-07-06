@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import AlignContainer from 'components/AlignContainer';
 import CourseDefault from 'components/Course';
 import { ButtonOutlined } from 'components/Button';
+import Card from 'components/Card';
 
 export const Container = styled(Row)`
     padding: 0;
@@ -25,6 +26,8 @@ export const CourseContainer = styled(Col).attrs({
 })`
     padding: 15px;
 `;
+
+export const CourseGeneral = styled(Card)``;
 
 export const Course = styled(CourseDefault)``;
 

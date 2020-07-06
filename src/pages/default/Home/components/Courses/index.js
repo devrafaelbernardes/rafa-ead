@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect, useCallback } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
-import { Container, General, Course, CourseContainer, Footer, LoadMoreButton, BuyButtonContainer, BuyButton } from './styles';
+import { Container, General, Course, CourseGeneral, CourseContainer, Footer, LoadMoreButton, BuyButtonContainer, BuyButton } from './styles';
 import List from 'components/List';
 import objectQuery, { GET_COURSES, getImageUser } from 'services/api/query';
 import { objectPagination } from 'services/api/config';
@@ -13,18 +13,20 @@ const Item = memo(({ href, ...props }) => {
     const TEXTS = Texts.PAGE_DEFAULT_HOME.TEXTS;
     return (
         <CourseContainer>
-            <Course {...props} />
-            {
-                href &&
-                <BuyButtonContainer>
-                    <BuyButton
-                        href={href}
-                        target="_blank"
-                    >
-                        {TEXTS.BUTTON_BUY}
-                    </BuyButton>
-                </BuyButtonContainer>
-            }
+            <CourseGeneral>
+                <Course {...props} />
+                {
+                    href &&
+                    <BuyButtonContainer>
+                        <BuyButton
+                            href={href}
+                            target="_blank"
+                        >
+                            {TEXTS.BUTTON_BUY}
+                        </BuyButton>
+                    </BuyButtonContainer>
+                }
+            </CourseGeneral>
         </CourseContainer>
     )
 });
@@ -101,6 +103,7 @@ export function Courses({ children, ...props }) {
                                     image={getImageUser(item[COURSE_PREVIEW.PROFILE_IMAGE])}
                                     href={item[COURSE_PREVIEW.PURCHASE_LINK]}
                                     title={item[COURSE_PREVIEW.NAME]}
+                                    expiration={item[COURSE_PREVIEW.MONTHS_TO_EXPIRES]}
                                 />
                             );
                         }}

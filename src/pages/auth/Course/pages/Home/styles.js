@@ -6,6 +6,16 @@ export const Container = styled(Row)`
     padding:15px;
 `;
 
+export const Access = styled(Row)`
+    color: ${({ theme }) => theme.colors.text};
+    margin-top: 15px;
+
+    & > span{
+        margin-left: 10px;
+        font-weight: bold;
+    }
+`;
+
 export const Description = styled(Row)`
     flex-direction: column;
     color: ${({ theme }) => theme.colors.text};

@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { STUDENT, IMAGE, PAGINATION, COURSE_PREVIEW, PAGE_INFO, COURSE, COURSE_VIDEO, VIDEO, ADMIN, COURSE_MATERIAL, MATERIAL } from './responseAPI';
+import { STUDENT, IMAGE, PAGINATION, COURSE_PREVIEW, PAGE_INFO, COURSE, COURSE_VIDEO, VIDEO, ADMIN, COURSE_MATERIAL, MATERIAL, COURSE_STUDENT } from './responseAPI';
 
 export const GET_CURRENTY_USER = gql`{   
     response : me_student{
@@ -23,6 +23,7 @@ export const GET_COURSES = gql`
                 ${COURSE_PREVIEW.NAME}
                 ${COURSE_PREVIEW.DESCRIPTION}
                 ${COURSE_PREVIEW.PURCHASE_LINK}
+                ${COURSE_PREVIEW.MONTHS_TO_EXPIRES}
                 ${COURSE_PREVIEW.PROFILE_IMAGE}{
                     ${IMAGE.ID}
                     ${IMAGE.URL}
@@ -74,6 +75,9 @@ export const GET_COURSE = gql`
                 ${IMAGE.ID}
                 ${IMAGE.URL}
             }
+        }
+        courseStudent: me_course_student(courseId : $id){
+            ${COURSE_STUDENT.EXPIRES_AT}
         }
     }
 `;

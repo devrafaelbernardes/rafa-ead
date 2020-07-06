@@ -26,6 +26,14 @@ export const Title = styled(Row)`
     margin-bottom: 5px;
 `;
 
+export const Expiration = styled(Row)`
+    font-size:${({ theme }) => theme.sizes.fonts.normal};
+    font-family:${({ theme }) => theme.fonts.normal};
+    color:${({ theme }) => theme.colors.secondary};
+    margin-bottom: 5px;
+    font-weight: bold;
+`;
+
 export const Description = styled(Row)`
     display: block;
     white-space: nowrap;
