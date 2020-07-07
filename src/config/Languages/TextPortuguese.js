@@ -5,6 +5,9 @@ export const TextPortuguese = {
     LOADING: {
         TITLE: 'Carregando',
     },
+    COURSE: {
+        EXPIRATION: 'Validade',
+    },
     DATE_EXPIRATION: {
         UNLIMITED: 'Tempo indeterminado',
         AND: 'e',
