@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import NoImageSRC from 'assets/images/no-thumbnail.png';
 
@@ -8,6 +8,17 @@ import Texts from 'config/Texts';
 
 export function Course({ image = null, title = null, expiration = null, description = null, link = "", componentHeader, componentBody, ...props }) {
     const TEXTS = Texts.COURSE;
+
+    const expirationDate = useMemo(() => {
+        try {
+            const response = +parseInt(expiration);
+            if (response && response > 0) {
+                return toDateExpiration(response);
+            }
+        } catch (error) { }
+        return null;
+    }, [expiration]);
+
     return (
         <Container
             {...props}
@@ -25,8 +36,8 @@ export function Course({ image = null, title = null, expiration = null, descript
                     <Title>{title}</Title>
                 }
                 {
-                    expiration &&
-                    <Expiration>{TEXTS.EXPIRATION} {toDateExpiration(expiration)}</Expiration>
+                    expirationDate &&
+                    <Expiration>{TEXTS.EXPIRATION} {expirationDate}</Expiration>
                 }
             </Body>
         </Container>
