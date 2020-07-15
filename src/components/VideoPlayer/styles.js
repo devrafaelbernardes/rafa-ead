@@ -14,7 +14,7 @@ export const Player = styled(ReactPlayer)`
     top: 0;
     left: 0;
 
-    & iframe {
+    & > div > iframe {
         width: 100% !important;
         height: 100% !important;
     }
