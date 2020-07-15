@@ -38,7 +38,7 @@ export function Videos() {
     const { data, loading } = useQuery(GET_COURSE_VIDEOS, objectQuery({
         id: courseId,
         ...objectPagination({
-            orderBy: [{ column: COURSE_VIDEO.NAME }]
+            orderBy: [{ column: COURSE_VIDEO.ID }]
         })
     }));
     const { indexVideo } = useParams();
